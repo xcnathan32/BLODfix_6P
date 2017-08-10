@@ -23,6 +23,9 @@ namespace BLODfix
                 if (File.Exists(@"C:\Windows\System32\fastboot.exe"))
                 {
                     Console.WriteLine("Fastboot found in System32");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    Console.Clear();
                     Console.WriteLine("Checking for adb in System32...");
                     if (File.Exists(@"C:\Windows\System32\adb.exe"))
                     {
@@ -86,6 +89,9 @@ namespace BLODfix
                         if (File.Exists(@"C:\Windows\System32\fastboot.exe"))
                         {
                             Console.WriteLine("Fastboot installed systemwide");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                            Console.Clear();
                             Console.WriteLine("Checking if adb is installed to System32...");
                             if (File.Exists(@"C:\Windows\System32\adb.exe"))
                             {
