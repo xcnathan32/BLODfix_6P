@@ -18,6 +18,7 @@ namespace BLODfix
             string entry = Console.ReadLine();
             if (entry == "y")
             {
+                Console.Clear();
                 Console.WriteLine("Checking for fastboot in System32...");
                 if (File.Exists(@"C:\Windows\System32\fastboot.exe"))
                 {
@@ -26,6 +27,9 @@ namespace BLODfix
                     if (File.Exists(@"C:\Windows\System32\adb.exe"))
                     {
                         Console.WriteLine("adb found in System32");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                        goto startflash;
                     }
                     else
                     {
@@ -34,6 +38,7 @@ namespace BLODfix
                         string adbinstall = Console.ReadLine();
                         if (adbinstall == "y")
                         {
+                            Console.Clear();
                             Console.WriteLine("Installing adb systemwide...");
                             var currentDirectory = Directory.GetCurrentDirectory();
                             string adbsrc = Path.Combine(currentDirectory, "adb.exe");
@@ -41,6 +46,8 @@ namespace BLODfix
                             if (File.Exists(@"C:\Windows\System32\adb.exe"))
                             {
                                 Console.WriteLine("adb installed systemwide");
+                                Console.WriteLine("Press any key to continue...");
+                                Console.ReadKey();
                                 goto startflash;
                             }
                             else
@@ -55,6 +62,7 @@ namespace BLODfix
                         }
                         else
                         {
+                            Console.Clear();
                             Console.WriteLine("BLODfixer cannot continue without adb");
                             Console.WriteLine("Please install adb to System32");
                             Console.WriteLine("Press any key to exit...");
@@ -71,6 +79,7 @@ namespace BLODfix
                     string fastbootinstall = Console.ReadLine();
                     if (fastbootinstall == "y")
                     {
+                        Console.Clear();
                         var currentDirectory = Directory.GetCurrentDirectory();
                         string fastbootsrc2 = Path.Combine(currentDirectory, "fastboot.exe");
                         File.Copy(fastbootsrc2, @"C:\Windows\System32\fastboot.exe");
@@ -81,6 +90,8 @@ namespace BLODfix
                             if (File.Exists(@"C:\Windows\System32\adb.exe"))
                             {
                                 Console.WriteLine("adb detected in System32");
+                                Console.WriteLine("Press any key to continue...");
+                                Console.ReadKey();
                                 goto startflash;
                             }
                             else
@@ -88,14 +99,17 @@ namespace BLODfix
                                 Console.WriteLine("adb not detected in System32");
                                 Console.WriteLine("Would you like to install adb systemwide? y/n");
                                 string adbinstall = Console.ReadLine();
-                                if (adbinstall == "y")
+                                if (adbinstall =="y")
                                 {
+                                    Console.Clear();
                                     Console.WriteLine("Installing adb systemwide...");
                                     string adbsrc2 = Path.Combine(currentDirectory, "adb.exe");
                                     File.Copy(adbsrc2, @"C:\Windows\System32\adb.exe");
                                     if (File.Exists(@"C:\Windows\System32\adb.exe"))
                                     {
                                         Console.WriteLine("adb installed systemwide");
+                                        Console.WriteLine("Press any key to continue...");
+                                        Console.ReadKey();
                                         goto startflash;
                                     }
                                     else
@@ -109,6 +123,7 @@ namespace BLODfix
                                 }
                                 else
                                 {
+                                    Console.Clear();
                                     Console.WriteLine("BLODfixer needs adb to continue");
                                     Console.WriteLine("Please install adb to System32");
                                     Console.WriteLine("Press any key to exit...");
@@ -130,6 +145,7 @@ namespace BLODfix
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("BLODfixer cannot continue without fastboot");
                         Console.WriteLine("Please install fastboot to System32");
                         Console.WriteLine("Press any key to exit...");
@@ -143,6 +159,7 @@ namespace BLODfix
                 Environment.Exit(1);
             }
             startflash:
+            Console.Clear();
             Console.WriteLine("yay it made it this far!");
             Console.ReadKey();
             Environment.Exit(0);
